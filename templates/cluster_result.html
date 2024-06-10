@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .result-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+        .result-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .result-container .centers {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .result-container .centers p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .result-container .centers ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .result-container .centers li {
+            background: #f4f4f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        .result-container a {
+            margin-top: 20px;
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .result-container a:hover {
+            text-decoration: underline;
+        }
+        .predicted-cluster {
+            font-size: 24px;
+            color: #007bff;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Clustering Result</h1>
+        <div class="predicted-cluster"><h1>Predicted Cluster: {{ cluster }}</h1></div>
+        <img src="{{ url_for('static', filename='result.png') }}" alt="Clustering Result">
+        <div class="centers">
+            <h2>Cluster Centers:</h2>
+            <ul>
+                {% for center in centers %}
+                    <li>Center {{ loop.index }}: {{ center }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <br>
+        <a href="{{ url_for('cluster') }}">Back to Input</a>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .result-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+        .result-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .result-container th, .result-container td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .result-container th {
+            background-color: #f2f2f2;
+        }
+        .result-container tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Python Result</h1>
+        <h2>Day-wise Inside and Outside Duration</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Inside Duration</th>
+                <th>Outside Duration</th>
+            </tr>
+            {% for date, inside_duration, outside_duration in duration_results %}
+            <tr>
+                <td>{{ date }}</td>
+                <td>{{ inside_duration[0] }} hours {{ inside_duration[1] }} minutes</td>
+                <td>{{ outside_duration[0] }} hours {{ outside_duration[1] }} minutes</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h2>Day-wise Picked and Placed Counts</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Picked Count</th>
+                <th>Placed Count</th>
+            </tr>
+            {% for date, placed_count, picked_count in activity_results %}
+            <tr>
+                <td>{{ date }}</td>
+                <td>{{ placed_count }}</td>
+                <td>{{ picked_count }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
